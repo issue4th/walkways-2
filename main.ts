@@ -1,6 +1,3 @@
-scene.onOverlapTile(SpriteKind.Player, null, function (sprite, undefined) {
-	
-})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile15`, function (sprite, location) {
     chest = sprites.create(img`
         . b b b b b b b b b b b b b b . 
@@ -21,6 +18,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile15`, function (sprite, 
         . b b . . . . . . . . . . b b . 
         `, SpriteKind.Player)
     info.changeScoreBy(1)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile13`, function (sprite, location) {
+    game.over(false)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, location) {
     chest = sprites.create(img`
