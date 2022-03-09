@@ -76,12 +76,6 @@
         "tilemapTile": true,
         "displayName": "myTile9"
     },
-    "tile13": {
-        "data": "hwQQABAAAAAAAAAAAAAAAACZmZmZmZkAkJmZmZmZmQmQaWZmZmaWCZBpZmZmZpYJkGmWmZlplgmQaZYREWGWCZBplpERYZYJkGmWEZFhlgmQaZYRGWGWCZBplhERYZYJkGlmZmZmlgmQaWZmZmaWCZCZmZmZmZkJAJmZmZmZmQAAAAAAAAAAAA==",
-        "mimeType": "image/x-mkcd-f4",
-        "tilemapTile": true,
-        "displayName": "myTile11"
-    },
     "tile14": {
         "data": "hwQQABAAAACoqqqqqqqqiouqqqqqqqrIu6iqqqqqisy7i6qqqqrIzLu7qKqqiszMu7uLqqrIzMy7u7uoiszMzLu7u4vIzMzMu7u7i8jMzMy7u7vYjczMzLu7i93dyMzMu7vY3d2NzMy7i93d3d3IzLvY3d3d3Y3Mi93d3d3d3cjY3d3d3d3djQ==",
         "mimeType": "image/x-mkcd-f4",
@@ -105,6 +99,24 @@
         "mimeType": "image/x-mkcd-f4",
         "tilemapTile": true,
         "displayName": "myTile15"
+    },
+    "tile18": {
+        "data": "hwQQABAAAAAAiIiIyIyICIBmZmaIbMaIaJlpZohsZoiYmZlmiGxmCJiZmWaIbGYImJmZZohsZgiYmZlmiMhmCJiZmWZ3h2YImJmZZlWHZgiYmZlmiMhmCJiZmWaIbGYImJmZZohsZgiYmZlmiGxmCGiZaWaIbGaIgGZmZohsxogAiIiIyIyICA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "myTile16"
+    },
+    "tile20": {
+        "data": "hwQQABAAAAD3////////f3///////393//f/f///9///d/9//3////9/d3f/d////3d/93f3//9////393///3//f3f3//f/f/93f/f/f3f///d/d/d3//9///9/d3f3//f//393//f/9///f///d3////9///9/d//////3/3////////f//w==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "myTile18"
+    },
+    "tile13": {
+        "data": "hwQQABAAAAAAgIiIiIiIAACYmZmZmZkIkJmZmZmZmYmQaWZmZmaWiZBpZmZmZpaJkGmWmZlplomQaZYREWGWiZBplpERYZaJkGmWEZFhlomQaZYRGWGWiZBplhERYZaJkGlmZmZmlomQaWZmZmaWiZCZmZmZmZmJAJmZmZmZmQgAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "tilemapTile": true,
+        "displayName": "myTile11"
     },
     "level1": {
         "id": "level1",
@@ -153,7 +165,8 @@
             "myTiles.tile6",
             "myTiles.tile10",
             "myTiles.tile15",
-            "myTiles.tile17"
+            "myTiles.tile17",
+            "myTiles.tile18"
         ],
         "displayName": "level4"
     },

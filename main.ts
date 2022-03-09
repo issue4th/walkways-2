@@ -3,23 +3,45 @@ scene.onOverlapTile(SpriteKind.Player, null, function (sprite, undefined) {
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile15`, function (sprite, location) {
     chest = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
+        . b b b b b b b b b b b b b b . 
+        b e 4 4 4 4 4 4 4 4 4 4 4 4 4 b 
+        b e 4 4 4 4 4 4 4 4 4 4 4 4 e b 
+        b e e 4 4 4 4 4 4 4 4 4 4 e e b 
+        b b b b b b b d d b b b b b b b 
+        . b b b b b b c c b b b b b b . 
+        b c c 5 5 c b c c b c c c c c b 
+        b 5 c 5 5 c 4 b b 5 c 5 4 5 c b 
+        b 4 5 4 4 5 4 4 5 4 4 f 5 4 5 b 
+        b 4 f 4 4 f 4 4 f 4 5 5 5 4 f b 
+        b b b b b b b b b b b b b b b b 
+        b e e e e e e e e e e e e e e b 
+        b e e e e e e e e e e e e e e b 
+        b c e e e e e e e e e e e e c b 
+        b b b b b b b b b b b b b b b b 
+        . b b . . . . . . . . . . b b . 
         `, SpriteKind.Player)
+    info.changeScoreBy(1)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, location) {
+    chest = sprites.create(img`
+        . 8 8 8 8 8 8 8 8 8 8 8 8 8 8 . 
+        8 6 9 9 9 9 9 9 9 9 9 9 9 9 9 8 
+        8 6 9 9 9 9 9 9 9 9 9 9 9 9 6 8 
+        8 6 6 9 9 9 9 9 9 9 9 9 9 6 6 8 
+        8 8 8 8 8 8 8 7 5 8 8 8 8 8 8 8 
+        . 8 8 8 8 8 8 7 5 8 8 8 8 8 8 . 
+        8 c c c c c 8 7 7 8 c c c c c 8 
+        8 c c 9 c c c 8 8 c c 9 c 1 9 8 
+        8 9 9 1 9 1 9 c c c 9 1 9 9 9 8 
+        8 1 9 9 1 9 9 1 9 1 9 9 1 9 1 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        8 6 6 6 6 6 6 6 6 6 6 6 6 6 6 8 
+        8 6 6 6 6 6 6 6 6 6 6 6 6 6 6 8 
+        8 c 6 6 6 6 6 6 6 6 6 6 6 6 c 8 
+        8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
+        . 8 8 . . . . . . . . . . 8 8 . 
+        `, SpriteKind.Player)
+    info.changeScoreBy(5)
 })
 let chest: Sprite = null
 scene.setBackgroundColor(6)
