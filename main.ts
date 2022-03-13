@@ -1,5 +1,6 @@
 namespace SpriteKind {
     export const npc = SpriteKind.create()
+    export const key = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile15`, function (sprite, location) {
     if (chest) {
@@ -55,36 +56,62 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, 
     }
 })
 function startgame () {
-    person = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . f f f f f . . . . . . 
-        . . . . . f 9 9 9 f . . . . . . 
-        . . . . . f 8 9 8 f . . . . . . 
-        . . . . . f 9 9 9 f . . . . . . 
-        . . . . . f f f f f . . . . . . 
-        . . . . . . . f . . . . . . . . 
-        . . . . . . . f . . . . . . . . 
-        . . . . . . . f . . . . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . . . . . f . . . . . . . . 
-        . . . . . . . f . . . . . . . . 
-        . . . . . . f f f . . . . . . . 
-        . . . . . f . . . f . . . . . . 
-        . . . . . f . . . f . . . . . . 
-        . . . . . f . . . f . . . . . . 
-        `, SpriteKind.npc)
-    tiles.placeOnRandomTile(person, assets.tile`myTile25`)
-    if (person.tileKindAt(TileDirection.Center, assets.tile`myTile25`)) {
-    	
-    } else {
-        person.destroy()
+    for (let location of tiles.getTilesByType(assets.tile`myTile25`)) {
+        temporary = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . f f f f f . . . . . . 
+            . . . . . f 8 8 8 f . . . . . . 
+            . . . . . f 6 8 6 f . . . . . . 
+            . . . . . f 8 8 8 f . . . . . . 
+            . . . . . f f f f f . . . . . . 
+            . . . . . . . f . . . . . . . . 
+            . . . . . . . f . . . . . . . . 
+            . . . . . . . f . . . . . . . . 
+            . . . . f f f f f f f . . . . . 
+            . . . . . . . f . . . . . . . . 
+            . . . . . . . f . . . . . . . . 
+            . . . . . . f f f . . . . . . . 
+            . . . . . f . . . f . . . . . . 
+            . . . . . f . . . f . . . . . . 
+            . . . . . f . . . f . . . . . . 
+            `, SpriteKind.npc)
+        tiles.placeOnTile(temporary, location)
+        tiles.setTileAt(location, assets.tile`transparency16`)
     }
     tiles.placeOnRandomTile(mySprite, assets.tile`myTile7`)
+    for (let location of tiles.getTilesByType(assets.tile`myTile25`)) {
+        temporary = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . c 5 5 5 . . . . . . . . . 
+            . . . c 5 c 5 5 5 5 5 5 . . . . 
+            . . . c 5 5 5 . c 5 c 5 . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `, SpriteKind.key)
+        tiles.placeOnTile(temporary, location)
+        tiles.setTileAt(location, assets.tile`transparency16`)
+    }
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.key, function (sprite, otherSprite) {
+    temporary.destroy()
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile10`, function (sprite, location) {
+    game.over(false)
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile11`, function (sprite, location) {
     game.over(true)
 })
-let person: Sprite = null
+let temporary: Sprite = null
 let chest: Sprite = null
 let mySprite: Sprite = null
 scene.setBackgroundColor(6)
@@ -260,7 +287,7 @@ game.onUpdate(function () {
     }
 })
 game.onUpdateInterval(2000, function () {
-    if (person) {
-        person.setVelocity(randint(-30, 30), randint(-30, 30))
+    if (temporary) {
+        temporary.setVelocity(randint(-30, 30), randint(-30, 30))
     }
 })
