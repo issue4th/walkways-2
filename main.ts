@@ -31,10 +31,10 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile13`, function (sprite, 
     game.over(false)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, location) {
-    if (chest) {
+    if (diamond_chest) {
     	
     } else {
-        chest = sprites.create(img`
+        diamond_chest = sprites.create(img`
             . 8 8 8 8 8 8 8 8 8 8 8 8 8 8 . 
             8 6 9 9 9 9 9 9 9 9 9 9 9 9 9 8 
             8 6 9 9 9 9 9 9 9 9 9 9 9 9 6 8 
@@ -52,7 +52,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, 
             8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
             . 8 8 . . . . . . . . . . 8 8 . 
             `, SpriteKind.Player)
-        tiles.placeOnRandomTile(chest, assets.tile`myTile16`)
+        tiles.placeOnRandomTile(diamond_chest, assets.tile`myTile16`)
     }
 })
 function startgame () {
@@ -77,9 +77,10 @@ function startgame () {
             `, SpriteKind.npc)
         tiles.placeOnTile(temporary, location)
         tiles.setTileAt(location, assets.tile`transparency16`)
+        temporary.setVelocity(randint(-30, 30), randint(-30, 30))
     }
     tiles.placeOnRandomTile(mySprite, assets.tile`myTile7`)
-    for (let location of tiles.getTilesByType(assets.tile`myTile25`)) {
+    for (let location of tiles.getTilesByType(assets.tile`myTile45`)) {
         temporary = sprites.create(img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -103,7 +104,9 @@ function startgame () {
     }
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.key, function (sprite, otherSprite) {
-    temporary.destroy()
+    for (let location of tiles.getTilesByType(assets.tile`myTile10`)) {
+        tiles.setTileAt(location, assets.tile`transparency16`)
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile10`, function (sprite, location) {
     game.over(false)
@@ -112,6 +115,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile11`, function (sprite, 
     game.over(true)
 })
 let temporary: Sprite = null
+let diamond_chest: Sprite = null
 let chest: Sprite = null
 let mySprite: Sprite = null
 scene.setBackgroundColor(6)
@@ -284,10 +288,5 @@ game.onUpdate(function () {
             `)
     } else {
     	
-    }
-})
-game.onUpdateInterval(2000, function () {
-    if (temporary) {
-        temporary.setVelocity(randint(-30, 30), randint(-30, 30))
     }
 })
