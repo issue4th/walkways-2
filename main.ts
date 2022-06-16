@@ -1,6 +1,7 @@
 namespace SpriteKind {
     export const npc = SpriteKind.create()
     export const key = SpriteKind.create()
+    export const Text = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile15`, function (sprite, location) {
     if (chest) {
@@ -55,6 +56,19 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile16`, function (sprite, 
         tiles.placeOnRandomTile(diamond_chest, assets.tile`myTile16`)
     }
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile54`, function (sprite, location) {
+    for (let location of tiles.getTilesByType(assets.tile`myTile52`)) {
+        tiles.setTileAt(location, assets.tile`transparency16`)
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile49`, function (sprite, location) {
+    for (let location of tiles.getTilesByType(assets.tile`myTile50`)) {
+        tiles.setTileAt(location, assets.tile`transparency16`)
+    }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile50`, function (sprite, location) {
+    game.over(false)
+})
 function startgame () {
     for (let location of tiles.getTilesByType(assets.tile`myTile25`)) {
         temporary = sprites.create(img`
@@ -77,7 +91,6 @@ function startgame () {
             `, SpriteKind.npc)
         tiles.placeOnTile(temporary, location)
         tiles.setTileAt(location, assets.tile`transparency16`)
-        temporary.setVelocity(randint(-30, 30), randint(-30, 30))
     }
     tiles.placeOnRandomTile(mySprite, assets.tile`myTile7`)
     for (let location of tiles.getTilesByType(assets.tile`myTile45`)) {
@@ -148,6 +161,9 @@ game.onUpdate(function () {
     } else if (mySprite.tileKindAt(TileDirection.Center, assets.tile`myTile26`)) {
         tiles.loadMap(tiles.createMap(tilemap`level7`))
         startgame()
+    } else if (mySprite.tileKindAt(TileDirection.Center, assets.tile`myTile34`)) {
+        tiles.loadMap(tiles.createMap(tilemap`level8`))
+        startgame()
     } else {
     	
     }
@@ -212,14 +228,14 @@ game.onUpdate(function () {
             `)
     } else if (mySprite.tileKindAt(TileDirection.Center, assets.tile`myTile2`)) {
         mySprite.setImage(img`
-            . . . . . . 4 4 4 . . . . . . . 
-            . . . . 4 4 4 4 4 4 4 . . . . . 
-            . . . . 4 f 5 5 5 f 4 . . . . . 
-            . . . . 4 f 6 5 6 f 4 . . . . . 
-            . . . 4 4 f 5 5 5 f 4 4 . . . . 
-            . . . 4 4 f f f f f 4 4 . . . . 
-            . . . 4 4 . . f . . 4 4 . . . . 
-            . . . 4 . . . f . . . 4 . . . . 
+            . . . . . . 8 8 8 . . . . . . . 
+            . . . . 8 8 8 8 8 8 8 . . . . . 
+            . . . . 8 f 6 6 6 f 8 . . . . . 
+            . . . . 8 f 8 6 8 f 8 . . . . . 
+            . . . 8 8 f 6 6 6 f 8 8 . . . . 
+            . . . 8 8 f f f f f 8 8 . . . . 
+            . . . 8 8 . . f . . 8 8 . . . . 
+            . . . 8 . . . f . . . 8 . . . . 
             . . . . . . . f . . . . . . . . 
             . . . . f f f f f f f . . . . . 
             . . . . . . . f . . . . . . . . 
